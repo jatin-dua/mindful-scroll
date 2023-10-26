@@ -7,7 +7,7 @@ function connected(p) {
   portFromCS.postMessage({ greeting: "hi there content script!" });
   portFromCS.onMessage.addListener((m) => {
     portFromCS.postMessage({
-      greeting: `In background script, received message from content script: ${m.greeting}`,
+      message: `In background script, received message from content script: ${m.message}`,
     });
   });
 }
@@ -15,5 +15,5 @@ function connected(p) {
 browser.runtime.onConnect.addListener(connected);
 
 browser.browserAction.onClicked.addListener(() => {
-  portFromCS.postMessage({ greeting: "they clicked the button!" });
+  portFromCS.postMessage({ message: "they clicked the button!" });
 });
