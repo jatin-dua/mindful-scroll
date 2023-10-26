@@ -20,5 +20,10 @@
     "scripts": ["background-script.js"],
     "persistent": true,
     "type": "module"
-  }  
+  },
+  
+  "permissions": [
+    "webRequest",
+    "notifications"
+  ]
 }

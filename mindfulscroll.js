@@ -1,6 +1,9 @@
 // content-script.js
 
 let myPort = browser.runtime.connect({ name: "port-from-cs" });
+let maxScrollHeight = document.body.scrollHeight;
+let curScrollHeight;
+
 myPort.postMessage({ message: "hello from content script" });
 
 myPort.onMessage.addListener((m) => {
@@ -9,5 +12,8 @@ myPort.onMessage.addListener((m) => {
 });
 
 document.onscrollend = (event) => {
-    myPort.postMessage({ message: "scrollend event fired!"});
-};
+    curScrollHeight = window.scrollY;
+    if (curScrollHeight >= (maxScrollHeight / 2)) {
+        myPort.postMessage({ message: "scrollend event fired!"});
+    };
+}
