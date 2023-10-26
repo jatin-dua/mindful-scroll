@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "MindfulScroll",
+  "version": "1.0",
+
+  "description": "Avoid getting distracted on addictive sites by preventing mindless scroll.",
+
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.mozilla.org/*"],
+      "js": ["borderify.js"]
+    }
+  ]
+}
